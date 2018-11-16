@@ -1,21 +1,25 @@
-#ifindef P5_H
+#ifndef P5_H
 #define P5_H
 
+#include <sys/shm.h>
+#include <sys/ipc.h>
 
+#define KEY 6789 /* logical clock */
+#define SKEY 7771 /* request path */
+
+int rshm_id;
+/*void* rshm_msg;*/
 
 int shm_id;
-key_t key;
-void* shm;
-key = 6789;
-shm_id = shmget(key, sizeof(int)*2, IPC_CREAT | 0666);
+/*void* shm_msg;*/
 
-if (shm_id == -1)
-{
-	perror("shmget");
-	exit(1);
-}
-
-
-
+typedef struct resource_desc{
+	int process;
+	char * request;
+	char * allocation;
+	char * release;
+	int max_claims;	
+	
+} Resource;
 
 #endif

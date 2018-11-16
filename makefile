@@ -9,7 +9,7 @@ all: $(TARGET) $(TARGET1)
 
 oss: $(OBJ)
 	$(CC) $(CFLAGS) -o oss $(OBJ)
-main.o : main.c
+main.o : main.c p5.h
 	$(CC) $(CFLAGS) -c main.c
 user: $(OBJ1)
 	$(CC) $(CFLAGS) $(LIBS) -o user $(OBJ1)
